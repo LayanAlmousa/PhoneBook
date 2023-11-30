@@ -105,8 +105,8 @@ public class Phonebook {
 	}
 
 	//2. Search for a contact
-	//the method allows the user to search for a contact in a contacts list implemented using a Binary Search Tree (contacts) based on different criteria like name,phone number, birthday, email address,address.
-	//first it checks if the contcacts list is empty, if its true then it  will provide the user with meaningfull message indicating that the contact is not on the list, otherwise it will show the search menu.
+	//the method allows the user to search for a contact in a contacts implemented using a Binary Search Tree (contacts) based on different criteria like name,phone number, birthday, email address,address.
+	//first it checks if the contcacts list is empty, if its true then it  will provide the user with meaningfull message indicating that the contact is not found, otherwise it will show the search menu.
 	//it takes no inputs, and there is no output since its void
 	public static void SearchContact()
 	{
@@ -198,10 +198,10 @@ public class Phonebook {
 		}            
 	}
 
-	//3. Delete a contact this method 
-	//this method allows the user to delete a contact from a contact list implmented using a Binary Search Tree (contacts), and it updates the associated events list by removing the contact from any events he was participating in.
-	//after initializing a Contact object c, It prompts the user to enter the contact's name, first it checks if the list is empty if its true it prints a message indicating that the contact couldn't be found and returns from the method
-	//otherwise, it checks if a contact with the specified name exists in the contact list using the findkey method of the contacts Binary Search Tree. If the contact is not found, it prints a message indicating that the contact couldn't be found and returns from the method.
+	//3. Delete a contact 
+	//this method allows the user to delete a contact from a contact implmented using a Binary Search Tree (contacts), and it updates the associated events list by removing the contact from any events he was participating in.
+	//after initializing a Contact object c, It prompts the user to enter the contact's name, first it checks if the contact BST is empty if its true it prints a message indicating that the contact couldn't be found and returns from the method
+	//otherwise, it checks if a contact with the specified name exists in the contact BST using the findkey method of the contacts Binary Search Tree. If the contact is not found, it prints a message indicating that the contact couldn't be found and returns from the method.
 	// else, If a match is found, the contact is removed from the event. If the event no longer has any participating contacts, it is removed from the main events list. then it prints a message confirming the successful deletion of the contact and displays its information.
 	//it takes no inputs, and there is no output since its void.
 	public static void DeleteContact()

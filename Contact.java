@@ -47,7 +47,7 @@ public class Contact implements Comparable<Contact> {
 				"\nEvents : " + events.toString();
 
 	}
-//The addEvent method is used to add an event to the contact's events list. 
+//The addEvent method is used to add an event to the contact's events list. it takes an event object and returns boolean
 //It checks if there are any existing events and then iterates through them to look for conflicts by matching the date and time of the new event to the one already scheduled.
 // If there is a conflict it returns false,  Otherwise, it adds the event to the list and returns true.
 	public boolean addEvent( Event e)
@@ -99,7 +99,7 @@ public class Contact implements Comparable<Contact> {
 		}
 	}
 
-
+//method for comparing phone number, takes a contact phone number(type string) and returns intger 
 	public int compareToPhone(String Phone) {
 		try {
 			return (this.phoneNumber.compareToIgnoreCase(Phone));
@@ -109,7 +109,7 @@ public class Contact implements Comparable<Contact> {
 			throw new UnsupportedOperationException("Not supported yet.");
 		}
 	}
-
+//method for comparing email address, takes a contact email address(type string) and returns intger
 	public int compareToEmail(String emailAddress) {
 		try {
 			return (this.emailAddress.compareToIgnoreCase(emailAddress));
@@ -119,7 +119,7 @@ public class Contact implements Comparable<Contact> {
 			throw new UnsupportedOperationException("Not supported yet.");
 		}
 	}
-
+//method for comparing addresses, takes a contact address(type string) and returns intger
 	public int compareToAddress(String address) {
 		try {
 			return (this.address.compareToIgnoreCase(address));
@@ -129,7 +129,7 @@ public class Contact implements Comparable<Contact> {
 			throw new UnsupportedOperationException("Not supported yet.");
 		}
 	}
-
+//method for comparing birthdays, takes a contact birthday(birthday)(type Date) and returns intger
 	public int compareToBirthday(Date birthday) {
 		try {
 			return (this.birthday.compareTo(birthday) ) ;
@@ -139,7 +139,7 @@ public class Contact implements Comparable<Contact> {
 			throw new UnsupportedOperationException("Not supported yet.");
 		}
 	}
-
+//method for comparing first names only, takes a contact full name(n)(type string) and then extract the first name, and returns intger
 	public int compareFirstName(String n) {
 		try {
 			String [] fullName = this.name.split(" "); //to separate the first and last name

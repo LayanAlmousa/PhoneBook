@@ -5,6 +5,7 @@ import java.util.Date;
 Contact: This class will represent a single contact in the phonebook. It should have fields for the 
 contact’s name, phone number, email address, address, birthday, and notes. */
 
+//implements the Comparable<Contact> interface so it can be compared to other Contact objects.
 public class Contact implements Comparable<Contact> {
 	String name;
 	String phoneNumber;
@@ -13,7 +14,8 @@ public class Contact implements Comparable<Contact> {
 	Date birthday; 
 	String notes;
 	LinkedList<Event> events ; 
-
+	
+//default constructor
 	public Contact() {
 		this.name = "";
 		this.phoneNumber = "";
@@ -23,7 +25,7 @@ public class Contact implements Comparable<Contact> {
 		this.notes = "";
 		events = new LinkedList<Event>();
 	}
-
+//constructor
 	public Contact(String name, String phoneNumber, String emailAddress, String address, String birthday, String notes) {
 		this.name = name;
 		this.phoneNumber = phoneNumber;
@@ -31,7 +33,7 @@ public class Contact implements Comparable<Contact> {
 		this.address = address;
 		this.birthday = new Date(birthday);
 		this.notes = notes;
-		events = new LinkedList<Event>();
+		events = new LinkedList<Event>(); //a LinkedList of events associated with the contact
 	}
 
 	@Override
@@ -45,7 +47,9 @@ public class Contact implements Comparable<Contact> {
 				"\nEvents : " + events.toString();
 
 	}
-
+//The addEvent method is used to add an event to the contact's events list. 
+//It checks if there are any existing events and iterates through them to check for any conflicts with the new event's date and time.
+// If there is a conflict, it returns false. Otherwise, it adds the event to the list and returns true.
 	public boolean addEvent( Event e)
 	{
 		
@@ -62,7 +66,7 @@ public class Contact implements Comparable<Contact> {
 			events.insert(e);
 			return true;
 	}
-
+//removes an event from the contact's events list based on the event title
 	public boolean removeEvent(String eventTitle)
 	{
 		if (events.empty())

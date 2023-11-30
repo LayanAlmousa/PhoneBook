@@ -48,8 +48,8 @@ public class Contact implements Comparable<Contact> {
 
 	}
 //The addEvent method is used to add an event to the contact's events list. 
-//It checks if there are any existing events and iterates through them to check for any conflicts with the new event's date and time.
-// If there is a conflict, it returns false. Otherwise, it adds the event to the list and returns true.
+//It checks if there are any existing events and then iterates through them to look for conflicts by matching the date and time of the new event to the one already scheduled.
+// If there is a conflict it returns false,  Otherwise, it adds the event to the list and returns true.
 	public boolean addEvent( Event e)
 	{
 		
@@ -66,16 +66,20 @@ public class Contact implements Comparable<Contact> {
 			events.insert(e);
 			return true;
 	}
-//removes an event from the contact's events list based on the event title
+//removes an event from the contact's events list based on the event title the method receives the event title and returns boolean (true or false).
+	// first it checks if the events list is empty. If it is empty, it means there are no events for this contact, so the method returns false.
+	//if the list is not empty, then it creates a new Event object called temp and assigns the eventTitle parameter to its title variable. (we use temp obj to search and compare the specified title in the list)
+	//then we search in the events list to find the Event  with a matching title. If a match is found, then we call remove method to delete the event from the list, and  return true.
+	//otherwise false is returned.
 	public boolean removeEvent(String eventTitle)
 	{
 		if (events.empty())
 			return false;
-		Event val = new Event();
-		val.title = eventTitle;
-		if (events.search(val))
+		Event temp = new Event();
+		temp.title = eventTitle;
+		if (events.search(temp))
 		{
-			events.remove(val);
+			events.remove(temp);
 			return true;
 		}
 		return false;

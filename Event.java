@@ -33,7 +33,8 @@ public class Event implements Comparable<Event> {
 		this.contactsNames = new LinkedList<String> ();
 		contactsNames.insert(contact);
 	}
-
+// first it checks the type if its an event or (If it's an appointment and there are no contacts added to it( there is no conflict)
+//if it is true then the new contact is added to the contactsNames list. Otherwise, it prints a message that says "You can't Add an appointment. there is conflict." and return false.
 	public boolean addContact (String contact)
 	{
 		if ((this.EventType == true) || ((this.EventType == false)&&(contactsNames.size == 0)))
@@ -42,7 +43,8 @@ public class Event implements Comparable<Event> {
 		System.out.println("You can't Add an appointment. there is conflict.");
 		return false;
 	}
-
+//removes a contact from the event's contactsNames list.
+//search for the contact name in the list, if it's found then it's deleted and return true else the name is not found and return false
 	public boolean removeContact(String contact)
 	{
 		String name = contactsNames.remove(contact);
@@ -53,7 +55,7 @@ public class Event implements Comparable<Event> {
 
 	@Override
 	public String toString() {
-		String EventT = (this.EventType == true)? "Event ": "Appoinment ";     
+		String EventT = (this.EventType == true)? "Event ": "Appoinment ";  // if its not event then its an appointment     
 		String str = "\n" + EventT + " title: " + title +
 				"\n " + EventT + "  date and time (MM/DD/YYYY HH:MM): " + date + time +
 				"\n" + EventT + " location: " + location +

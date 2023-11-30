@@ -67,6 +67,8 @@ public class Phonebook {
 
 
 	//1. Add a contact
+	//adds a new contact to a contact list implemented using a Binary Search Tree (contacts), inside the method it takes the following information(name,phone number, email address, address,birthday, notes) from the user to create a new contact and add it to the contact list, while makeing sure that the contact name and phone number are unique within the list
+	//it takes no inputs, and there is no output since its void
 	public static void AddContact(){
 		Contact c = new Contact();
 		System.out.println("Enter the contact\'s name: ");

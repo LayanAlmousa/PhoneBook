@@ -225,7 +225,7 @@ public class BST<K extends Comparable<K>,T> {
 		}
 		return false; // Not found
 	}
-	//======================================================================================
+	//
 	/* 
     In order traversal
 	 */
@@ -252,9 +252,9 @@ public class BST<K extends Comparable<K>,T> {
 		return str;
 	}
 
-	//==============================================
+	//
 	// Search contact phone in the BST O(n)
-	//==============================================
+	//
 	public boolean SearchPhone(String phone)
 	{
 		return SearchPhoneRecursive(root, phone);
@@ -273,9 +273,9 @@ public class BST<K extends Comparable<K>,T> {
 		return (SearchPhoneRecursive(p.left , phone) || SearchPhoneRecursive(p.right, phone));
 	}
 
-	//==============================================
+	//
 	// Search contact email in the BST O(n)
-	//==============================================
+	//
 	public void SearchEmail(String email)
 	{
 		SearchEmailRecursive (root, email);
@@ -292,9 +292,9 @@ public class BST<K extends Comparable<K>,T> {
 		SearchEmailRecursive(p.right, email);
 	}
 
-	//==============================================
+	//
 	// Search contact address in the BST O(n)
-	//==============================================
+	//
 	public void SearchAddress(String address)
 	{
 		SearchAddressRecursive (root, address);
@@ -310,9 +310,9 @@ public class BST<K extends Comparable<K>,T> {
 		SearchAddressRecursive(p.right, address);
 	}
 
-	//==============================================
+	//
 	// Search contact birthday in the BST O(n)
-	//==============================================
+	//
 	public void SearchBirthday(Date birthday)
 	{
 		SearchBirthdayRecursive(root, birthday);
@@ -328,9 +328,9 @@ public class BST<K extends Comparable<K>,T> {
 		SearchBirthdayRecursive(p.right, birthday);
 	}
 
-	//==============================================
+
 	// Search contact birthday in the BST O(n)
-	//==============================================
+	
 	public void SearchSameFirstName(String name)
 	{
 		SearchSameFirstNameRecursive (root, name.trim());

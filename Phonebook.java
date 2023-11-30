@@ -3,10 +3,10 @@ import java.util.Date;
 import java.util.Scanner;
 
 /*
- This class will represent the phonebook application itself. It should have a field for 
-the linked list ADT that stores the contacts and methods for interacting with the list (e.g., adding, 
-searching, and deleting contacts). You will also need to schedule events and appointments with 
-contacts.
+
+This class represents a phonebook application. It includes a field for a linked list data structure that stores contacts,
+as well as methods for interacting with the contact list such as adding, searching, and deleting contacts.
+Additionally, it provides functionality for scheduling events and appointments with contacts.
  */
 
 public class Phonebook {
@@ -15,7 +15,7 @@ public class Phonebook {
 	public static BST <String, Contact> contacts = new BST <String, Contact>();
 	public static LinkedList <Event> events = new LinkedList <Event>();
 
-	public static int menu ()
+	public static int menu ()//a user-friendly interface for interacting with the phonebook
 	{
 		System.out.println("Please choose an option:");
 		System.out.println("1. Add a contact");
@@ -195,7 +195,7 @@ public class Phonebook {
 		}            
 	}
 
-	//3. Delete a contact
+	//3. Delete a contact this method 
 	public static void DeleteContact()
 	{
 		Contact c = new Contact();

@@ -66,7 +66,7 @@ public class Contact implements Comparable<Contact> {
 			events.insert(e);
 			return true;
 	}
-//removes an event from the contact's events list based on the event title the method receives the event title and returns boolean (true or false).
+//removes an event from the contact's events list based on the event title, the method receives the event title and returns boolean (true or false).
 	// first it checks if the events list is empty. If it is empty, it means there are no events for this contact, so the method returns false.
 	//if the list is not empty, then it creates a new Event object called temp and assigns the eventTitle parameter to its title variable. (we use temp obj to search and compare the specified title in the list)
 	//then we search in the events list to find the Event  with a matching title. If a match is found, then we call remove method to delete the event from the list, and  return true.
@@ -84,7 +84,9 @@ public class Contact implements Comparable<Contact> {
 		}
 		return false;
 	}
-
+//It compares the name attribute of the current Contact object (this.name) with the name attribute of the specified Contact object (c.name). 
+//It uses the compareToIgnoreCase method to perform a case-insensitive comparison of the names.
+//It returns a negative integer if the current contact's name comes before the specified contact's name, zero if they are equal, and a positive integer if the current contact's name comes after the specified contact's name.
 	@Override
 	public int compareTo(Contact c) {
 		try {

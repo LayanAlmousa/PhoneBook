@@ -1,6 +1,6 @@
 package Phonebook;
 import java.util.Date;
-
+//BST with methods to insert, remove, update, and search for nodes according to various standards
 public class BST<K extends Comparable<K>,T> {
 	//THE NODE CLASS
 	class BSTNode <K extends Comparable<K>,T> {

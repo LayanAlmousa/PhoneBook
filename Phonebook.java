@@ -119,7 +119,7 @@ public class Phonebook {
 			{
 			case 1:
 			{
-				System.out.print("Enter the contact\'s name: ");
+				System.out.print("Enter the contact's name: ");
 				input.nextLine();
 				String name = input.nextLine();
 

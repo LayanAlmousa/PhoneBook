@@ -84,9 +84,10 @@ public class Contact implements Comparable<Contact> {
 		}
 		return false;
 	}
-//It compares the name attribute of the current Contact object (this.name) with the name attribute of the specified Contact object (c.name). 
-//It uses the compareToIgnoreCase method to perform a case-insensitive comparison of the names.
-//It returns a negative integer if the current contact's name comes before the specified contact's name, zero if they are equal, and a positive integer if the current contact's name comes after the specified contact's name.
+	//method for comparing names, takes contact name and returns intger 
+//It compares The name attribute of the provided Contact object (c.name) and the name attribute of the current Contact object (this.name) 
+//It compares the names case-insensitively using the compareToIgnoreCase function.
+//It returns a negative integer if the current contact's name alphabetically comes before the specified contact's name, zero if they are equal, and a positive integer if the current contact's name comes alphabetically after the specified contact's name.
 	@Override
 	public int compareTo(Contact c) {
 		try {

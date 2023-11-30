@@ -199,11 +199,16 @@ public class Phonebook {
 	}
 
 	//3. Delete a contact this method 
+	//this method allows the user to delete a contact from a contact list implmented using a Binary Search Tree (contacts), and it updates the associated events list by removing the contact from any events he was participating in.
+	//after initializing a Contact object c, It prompts the user to enter the contact's name, first it checks if the list is empty if its true it prints a message indicating that the contact couldn't be found and returns from the method
+	//otherwise, it checks if a contact with the specified name exists in the contact list using the findkey method of the contacts Binary Search Tree. If the contact is not found, it prints a message indicating that the contact couldn't be found and returns from the method.
+	// else, If a match is found, the contact is removed from the event. If the event no longer has any participating contacts, it is removed from the main events list. then it prints a message confirming the successful deletion of the contact and displays its information.
+	//it takes no inputs, and there is no output since its void.
 	public static void DeleteContact()
 	{
 		Contact c = new Contact();
 
-		System.out.print("Enter the contact\'s name: ");
+		System.out.print("Enter the contact's name: ");
 		input.nextLine();
 		c.name = input.nextLine();
 
@@ -450,9 +455,12 @@ public class Phonebook {
 	}
 
 	//6. Print contacts by first name
+	//this method allows the user to search by the first name and then print all contact's information.
+	// If contacts with the specified first name are found, they are printed. Otherwise, a message is displayed indicating that the contacts couldn't be found.
+	////it takes no inputs, and there is no output since its void
 	public static void PrintContactsFirstName(){
 
-		System.out.print("Enter the first name:");
+		System.out.print("Enter the contact first name:");
 		String fname = input.next().trim();
 
 		if (contacts.empty())
@@ -462,6 +470,9 @@ public class Phonebook {
 	}
 
 	//7. Print all events alphabetically // O(n)
+	//this method allows the user to print all events stored in the event list in alphabetical order.
+	//If events are found, they are printed. Otherwise, a message is displayed indicating that the events couldn't be found.
+	//it takes no inputs, and there is no output since its void
 	public static void PrintAllEvents(){
 		if (!events.empty())
 			System.out.println(events.toString());
@@ -471,7 +482,7 @@ public class Phonebook {
 
 	public static void main(String[] args) {
 		// TODO code application logic here
-		Contact c1=new Contact("Layan Almousa", "0534909456","Layan@gmail.com", "12345, aa street", "29/04/2003", " ");
+		Contact c1=new Contact("Layan Almousa", "0534909456","Layan@gmail.com", "12345, aa street", "29/04/2003", "bye");
 		Contact c2=new Contact("Retaj Alghamdi", "0596889324","retaj@gmail.com", "11111, cc street", "29/04/2003", "hellooo");
 		Contact c3=new Contact("Anwar Alshamrani", "0551353150","Anwar@gmail.com", "11111, cc street", "23/03/2003", "stay safe");
 

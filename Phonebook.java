@@ -105,6 +105,9 @@ public class Phonebook {
 	}
 
 	//2. Search for a contact
+	//the method allows the user to search for a contact in a contacts list implemented using a Binary Search Tree (contacts) based on different criteria like name,phone number, birthday, email address,address.
+	//first it checks if the contcacts list is empty, if its true then it  will provide the user with meaningfull message indicating that the contact is not on the list, otherwise it will show the search menu.
+	//it takes no inputs, and there is no output since its void
 	public static void SearchContact()
 	{
 		int choice = submenu2();

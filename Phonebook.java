@@ -110,77 +110,77 @@ public class Phonebook {
 	//it takes no inputs, and there is no output since its void
 	public static void SearchContact()
 	{
-		int choice = submenu2();
-		if (contacts.empty())
+		int choice = submenu2();//1
+		if (contacts.empty())//1
 			System.out.println("Couldn't Find the contact.");
 		else
 		{
-			switch ( choice )
+			switch ( choice )//1
 			{
-			case 1:
+			case 1://1
 			{
-				System.out.print("Enter the contact's name: ");
-				input.nextLine();
-				String name = input.nextLine();
+				System.out.print("Enter the contact's name: ");//1
+				input.nextLine();//1
+				String name = input.nextLine();//1
 
-				if (!contacts.empty() && contacts.findkey(name))
+				if (!contacts.empty() && contacts.findkey(name))//logn+1
 				{
-					System.out.println("Couldn't Find the contact.");
+					System.out.println("Couldn't Find the contact.");//1
 
-					System.out.println(contacts.retrieve().toString());
-					break;
+					System.out.println(contacts.retrieve().toString());//1
+					break;//1
 				}
-				System.out.println("Couldn't Find the contact.");
+				System.out.println("Couldn't Find the contact.");//1
 			}
-			break;
+			break;//1
 
-			case 2:
+			case 2://1
 			{
-				System.out.print("Enter the contact's phone number:");
-				input.nextLine();
-				String phonenumber = input.nextLine();
+				System.out.print("Enter the contact's phone number:");//1
+				input.nextLine();//1
+				String phonenumber = input.nextLine();//1
 
-				if (!contacts.empty() && contacts.SearchPhone(phonenumber))
+				if (!contacts.empty() && contacts.SearchPhone(phonenumber))//n+1
 				{
-					System.out.println("Couldn't Find the contact.");
+					System.out.println("contact is found!");//1
 
+					System.out.println(contacts.retrieve());//1
+					break;//1
+				}
+				System.out.println("Couldn't Find the contact.");//1
+			}
+			break;//1
+
+			case 3://1
+			{
+				System.out.print("Enter the contact's email address: ");//1
+				input.nextLine();//1
+				String emailaddress = input.nextLine();//1
+
+				if (!contacts.empty() && contacts.SearchEmail(emailaddress))//1
+				{
+					System.out.println("Contact found!");//1
 					System.out.println(contacts.retrieve());
-					break;
+					break;//1
 				}
-				System.out.println("Couldn't Find the contact.");
-			}
-			break;
-
-			case 3:
-			{
-				System.out.print("Enter the contact's email address: ");
-				input.nextLine();
-				String emailaddress = input.nextLine();
-
-				if (!contacts.empty())
-				{
-					contacts.SearchEmail(emailaddress);
-					System.out.println("Contact found!");
-					break;
-				}
-				System.out.println("Couldn't Find the contact.");
+				System.out.println("Couldn't Find the contact.");//1
 			}                
-			break;
+			break;//1
 
 			case 4:
 			{
-				System.out.print("Enter the contact's address: ");
-				input.nextLine();
-				String address = input.nextLine();
-				if (!contacts.empty() )
+				System.out.print("Enter the contact's address: ");//1
+				input.nextLine();//1
+				String address = input.nextLine();//1
+				if (!contacts.empty() )//1
 				{
-					contacts.SearchAddress(address);
-					System.out.println("Contact found!");
-					break;
+					contacts.SearchAddress(address);//n
+					System.out.println("Contact found!");//1
+					break;//1
 				}
-				System.out.println("Couldn't Find the contact.");
+				System.out.println("Couldn't Find the contact.");//1
 			}                
-			break;
+			break;//1
 
 			case 5:
 			{

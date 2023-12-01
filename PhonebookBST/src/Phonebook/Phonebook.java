@@ -150,21 +150,19 @@ public class Phonebook {
 				System.out.println("Couldn't Find the contact.");//1
 			}
 			break;//1
-
+			
 			case 3://1
 			{
 				System.out.print("Enter the contact's email address: ");//1
 				input.nextLine();//1
-				String emailaddress = input.nextLine();//1
+				String emailAddress = input.nextLine();//1
 
-				if (!contacts.empty() && contacts.SearchEmail(emailaddress))//1
+				if (!contacts.empty())//1
 				{
-					System.out.println("contact is found!");//1
-
-					System.out.println(contacts.retrieve());//1
+					contacts.SearchEmail(emailAddress);
 					break;//1
 				}
-				System.out.println("Couldn't Find the contact.");//1
+
 			}                
 			break;//1
 
@@ -173,14 +171,11 @@ public class Phonebook {
 				System.out.print("Enter the contact's address: ");//1
 				input.nextLine();//1
 				String address = input.nextLine();//1
-				if (!contacts.empty() && contacts.SearchAddress(address) )//1
+				if (!contacts.empty())//1
 				{
-					System.out.println("contact is found!");//1
-
-					System.out.println(contacts.retrieve());//1
+					contacts.SearchAddress(address);
 					break;//1
 				}
-				System.out.println("Couldn't Find the contact.");//1
 			}                
 			break;//1
 
@@ -188,11 +183,9 @@ public class Phonebook {
 			{
 				System.out.print("Enter the contact's Birthday: ");
 				Date birthday = new Date(input.next());
-				if (!contacts.empty() && contacts.SearchBirthday(birthday) )
+				if (!contacts.empty())//1
 				{
-					System.out.println("contact is found!");//1
-
-					System.out.println(contacts.retrieve());//1
+					contacts.SearchBirthday(birthday);
 					break;//1
 				}
 				System.out.println("Couldn't Find the contact.");

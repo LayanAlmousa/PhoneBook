@@ -32,7 +32,7 @@ public class BST<K extends Comparable<K>,T> {
 		}
 
 	}//end of node class
-	
+
 	BSTNode<K,T> root, current;
 
 	/** Creates a new instance of BST */
@@ -55,7 +55,7 @@ public class BST<K extends Comparable<K>,T> {
 	public boolean findkey(K tkey) {
 		BSTNode<K,T>  p = root;
 		BSTNode<K,T>  q = root;
-		
+
 		if(empty() || tkey==null)
 			return false;
 
@@ -73,7 +73,7 @@ public class BST<K extends Comparable<K>,T> {
 		current = q;
 		return false;
 	}
-	
+
 	public boolean insert(K k, T val) {
 		BSTNode<K,T>  p;
 		BSTNode<K,T>  q = current;
@@ -113,24 +113,24 @@ public class BST<K extends Comparable<K>,T> {
 			return null;
 		if(key.compareTo(p.key) <0)
 			p.left = remove_aux(key, p.left, flag); //go left
-			else if(key.compareTo(p.key) >0)
-				p.right = remove_aux(key, p.right, flag); //go right
-			else {
-				flag = true;
-				if (p.left != null && p.right != null){ //two children
-					q = find_min(p.right);
-					p.key = q.key;
-					p.data = q.data;
-					p.right = remove_aux(q.key, p.right, flag);
-				}
-				else {
-					if (p.right == null) //one child
-						child = p.left;
-					else if (p.left == null) //one child
-						child = p.right;
-					return child;
-				}
+		else if(key.compareTo(p.key) >0)
+			p.right = remove_aux(key, p.right, flag); //go right
+		else {
+			flag = true;
+			if (p.left != null && p.right != null){ //two children
+				q = find_min(p.right);
+				p.key = q.key;
+				p.data = q.data;
+				p.right = remove_aux(q.key, p.right, flag);
 			}
+			else {
+				if (p.right == null) //one child
+					child = p.left;
+				else if (p.left == null) //one child
+					child = p.right;
+				return child;
+			}
+		}
 		return p;
 	}
 
@@ -276,82 +276,114 @@ public class BST<K extends Comparable<K>,T> {
 	//
 	// Search contact email in the BST O(n)
 	//
-	public boolean SearchEmail(String email)
-	{
-		return SearchEmailRecursive (root, email);
+	public void SearchEmail(String email) {
+		if (!SearchEmailRecursive(root, email)) {
+			System.out.println("Couldn't find the contact");
+		}
 	}
-	private boolean SearchEmailRecursive(BSTNode <K, T> p, String email)
-	{
-		if (p == null)
+
+	private boolean SearchEmailRecursive(BSTNode<K, T> p, String email) {
+		if (p == null) {
 			return false;
-
-		else    if (((Contact)p.data).compareToEmail(email) == 0)
-		{
-			current = p;
-
-			return true;
 		}
 
-		return (SearchEmailRecursive(p.left , email) || SearchEmailRecursive(p.right, email));
+		boolean found = false;
+
+		if (((Contact) p.data).compareToEmail(email) == 0) {
+			System.out.println(p.data);
+			found = true;
+		}
+
+		// Search in the left and right subtrees and accumulate matches
+		boolean foundInLeft = SearchEmailRecursive(p.left, email);
+		boolean foundInRight = SearchEmailRecursive(p.right, email);
+
+		// Return true if found in either left or right subtrees or if found in this node
+		return found || foundInLeft || foundInRight;
 	}
+
 
 	//
 	// Search contact address in the BST O(n)
 	//
-	public boolean SearchAddress(String address)
+	public void SearchAddress(String address)
 	{
-		return SearchAddressRecursive (root, address);
+		if(!SearchAddressRecursive (root, address))
+			System.out.println("Couldn't find the contact");
 	}
 	private boolean SearchAddressRecursive (BSTNode <K, T> p, String address)
 	{
 		if (p == null)
 			return false;
-		else    if (((Contact)p.data).compareToAddress(address) == 0)
-		{
-			current = p;
-			return true;
-		}
 
-		return (SearchAddressRecursive(p.left , address) || SearchAddressRecursive(p.right, address));
+		boolean found = false;
+
+		if (((Contact)p.data).compareToAddress(address) == 0) {
+			System.out.println(p.data);
+			found = true;
+		}
+		boolean foundInLeft = SearchAddressRecursive(p.left , address);
+		boolean foundInRight = SearchAddressRecursive(p.right, address);
+
+		return found || foundInLeft || foundInRight;
 	}
 
 	//
 	// Search contact birthday in the BST O(n)
 	//
-	public boolean SearchBirthday(Date birthday)
-	{
-		return SearchBirthdayRecursive(root, birthday);
-	}
-	private boolean SearchBirthdayRecursive (BSTNode <K, T> p, Date birthday)
-	{
-		if (p == null)
-			return false ;
-		else    if (((Contact)p.data).compareToBirthday(birthday) == 0)
-		{
-			current = p;
-			return true;
+	public void SearchBirthday(Date birthday) {
+		if (!SearchBirthdayRecursive(root, birthday)) {
+			System.out.println("Couldn't find the contact");
 		}
-		
-
-		return (SearchBirthdayRecursive(p.left , birthday) || SearchBirthdayRecursive(p.right, birthday));
 	}
 
-
-	// Search contact birthday in the BST O(n)
-	
-	public boolean SearchSameFirstName(String name)
-	{
-		return SearchSameFirstNameRecursive (root, name.trim());
-	}
-	private boolean SearchSameFirstNameRecursive (BSTNode <K, T> p, String name)
-	{
-		if (p == null)
+	private boolean SearchBirthdayRecursive (BSTNode <K, T> p, Date birthday) {
+		if (p == null) {
 			return false;
-		else    if (((Contact)p.data).compareFirstName(name) == 0)
-		{
-			current = p;
-			return true;
 		}
 
-		return (SearchSameFirstNameRecursive(p.left , name) || SearchSameFirstNameRecursive(p.right, name));
-	}}
+		boolean found = false;
+
+		if (((Contact)p.data).compareToBirthday(birthday) == 0) {
+			System.out.println(p.data);
+			found = true;
+		}
+
+		// Search in the left and right subtrees and accumulate matches
+		boolean foundInLeft = SearchBirthdayRecursive(p.left , birthday);
+		boolean foundInRight = SearchBirthdayRecursive(p.right, birthday);
+
+		// Return true if found in either left or right subtrees or if found in this node
+		return found || foundInLeft || foundInRight;
+	}
+
+
+	// Search contact birthday in the BST O(n)
+
+
+	public void SearchSameFirstName(String name) {
+		if (!SearchSameFirstNameRecursive (root, name.trim())) {
+			System.out.println("Couldn't find the contact");
+		}
+	}
+
+	private boolean SearchSameFirstNameRecursive (BSTNode <K, T> p, String name) {
+		if (p == null) {
+			return false;
+		}
+
+		boolean found = false;
+
+		if (((Contact)p.data).compareFirstName(name) == 0) {
+			System.out.println(p.data);
+			found = true;
+		}
+
+		// Search in the left and right subtrees and accumulate matches
+		boolean foundInLeft = SearchSameFirstNameRecursive(p.left , name);
+		boolean foundInRight = SearchSameFirstNameRecursive(p.right, name);
+
+		// Return true if found in either left or right subtrees or if found in this node
+		return found || foundInLeft || foundInRight;
+	}
+}

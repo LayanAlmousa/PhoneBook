@@ -125,7 +125,7 @@ public class Phonebook {
 
 				if (!contacts.empty() && contacts.findkey(name))//logn+1
 				{
-					System.out.println("Couldn't Find the contact.");//1
+					System.out.println("contact is found");//1
 
 					System.out.println(contacts.retrieve().toString());//1
 					break;//1

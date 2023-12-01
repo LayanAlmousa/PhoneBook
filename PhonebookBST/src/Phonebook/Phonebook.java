@@ -527,7 +527,7 @@ public class Phonebook {
 				System.out.println("Goodbye!");
 				break;
 			default :
-				System.out.println("Bad choice! Try again");
+				System.out.println("wrong choice! Try again");
 			}
 			System.out.println("\n\n");
 		}while (choice != 8);

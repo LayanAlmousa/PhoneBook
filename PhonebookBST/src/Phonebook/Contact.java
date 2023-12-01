@@ -95,7 +95,7 @@ public class Contact implements Comparable<Contact> {
 		}
 		catch (Exception e)
 		{
-			throw new UnsupportedOperationException("Not supported yet.");
+			throw new UnsupportedOperationException("failed.");
 		}
 	}
 
@@ -106,7 +106,7 @@ public class Contact implements Comparable<Contact> {
 		}
 		catch (Exception e)
 		{
-			throw new UnsupportedOperationException("Not supported yet.");
+			throw new UnsupportedOperationException("failed.");
 		}
 	}
 //method for comparing email address, takes a contact email address(type string) and returns intger
@@ -116,7 +116,7 @@ public class Contact implements Comparable<Contact> {
 		}
 		catch (Exception e)
 		{
-			throw new UnsupportedOperationException("Not supported yet.");
+			throw new UnsupportedOperationException("failed.");
 		}
 	}
 //method for comparing addresses, takes a contact address(type string) and returns intger
@@ -126,7 +126,7 @@ public class Contact implements Comparable<Contact> {
 		}
 		catch (Exception e)
 		{
-			throw new UnsupportedOperationException("Not supported yet.");
+			throw new UnsupportedOperationException("failed");
 		}
 	}
 //method for comparing birthdays, takes a contact birthday(birthday)(type Date) and returns intger
@@ -136,7 +136,7 @@ public class Contact implements Comparable<Contact> {
 		}
 		catch (Exception e)
 		{
-			throw new UnsupportedOperationException("Not supported yet.");
+			throw new UnsupportedOperationException("failed");
 		}
 	}
 //method for comparing first names only, takes a contact full name(n)(type string) and then extract the first name, and returns intger
@@ -147,7 +147,7 @@ public class Contact implements Comparable<Contact> {
 		}
 		catch (Exception e)
 		{
-			throw new UnsupportedOperationException("Not supported yet.");
+			throw new UnsupportedOperationException("failed");
 		}
 	}
 }

@@ -276,72 +276,82 @@ public class BST<K extends Comparable<K>,T> {
 	//
 	// Search contact email in the BST O(n)
 	//
-	public void SearchEmail(String email)
+	public boolean SearchEmail(String email)
 	{
-		SearchEmailRecursive (root, email);
+		return SearchEmailRecursive (root, email);
 	}
-	private void SearchEmailRecursive(BSTNode <K, T> p, String email)
+	private boolean SearchEmailRecursive(BSTNode <K, T> p, String email)
 	{
 		if (p == null)
-			return;
+			return false;
 
 		else    if (((Contact)p.data).compareToEmail(email) == 0)
-			System.out.println(p.data);
+		{
+			current = p;
 
-		SearchEmailRecursive(p.left , email);
-		SearchEmailRecursive(p.right, email);
+			return true;
+		}
+
+		return (SearchEmailRecursive(p.left , email) || SearchEmailRecursive(p.right, email));
 	}
 
 	//
 	// Search contact address in the BST O(n)
 	//
-	public void SearchAddress(String address)
+	public boolean SearchAddress(String address)
 	{
-		SearchAddressRecursive (root, address);
+		return SearchAddressRecursive (root, address);
 	}
-	private void SearchAddressRecursive (BSTNode <K, T> p, String address)
+	private boolean SearchAddressRecursive (BSTNode <K, T> p, String address)
 	{
 		if (p == null)
-			return ;
+			return false;
 		else    if (((Contact)p.data).compareToAddress(address) == 0)
-			System.out.println(p.data);
+		{
+			current = p;
+			return true;
+		}
 
-		SearchAddressRecursive(p.left , address);
-		SearchAddressRecursive(p.right, address);
+		return (SearchAddressRecursive(p.left , address) || SearchAddressRecursive(p.right, address));
 	}
 
 	//
 	// Search contact birthday in the BST O(n)
 	//
-	public void SearchBirthday(Date birthday)
+	public boolean SearchBirthday(Date birthday)
 	{
-		SearchBirthdayRecursive(root, birthday);
+		return SearchBirthdayRecursive(root, birthday);
 	}
-	private void SearchBirthdayRecursive (BSTNode <K, T> p, Date birthday)
+	private boolean SearchBirthdayRecursive (BSTNode <K, T> p, Date birthday)
 	{
 		if (p == null)
-			return ;
+			return false ;
 		else    if (((Contact)p.data).compareToBirthday(birthday) == 0)
-			System.out.println(p.data);
+		{
+			current = p;
+			return true;
+		}
+		
 
-		SearchBirthdayRecursive(p.left , birthday);
-		SearchBirthdayRecursive(p.right, birthday);
+		return (SearchBirthdayRecursive(p.left , birthday) || SearchBirthdayRecursive(p.right, birthday));
 	}
 
 
 	// Search contact birthday in the BST O(n)
 	
-	public void SearchSameFirstName(String name)
+	public boolean SearchSameFirstName(String name)
 	{
-		SearchSameFirstNameRecursive (root, name.trim());
+		return SearchSameFirstNameRecursive (root, name.trim());
 	}
-	private void SearchSameFirstNameRecursive (BSTNode <K, T> p, String name)
+	private boolean SearchSameFirstNameRecursive (BSTNode <K, T> p, String name)
 	{
 		if (p == null)
-			return ;
+			return false;
 		else    if (((Contact)p.data).compareFirstName(name) == 0)
-			System.out.println(p.data);
+		{
+			current = p;
+			return true;
+		}
 
-		SearchSameFirstNameRecursive(p.left , name);
-		SearchSameFirstNameRecursive(p.right, name);
+		return (SearchSameFirstNameRecursive(p.left , name) || SearchSameFirstNameRecursive(p.right, name));
 	}}

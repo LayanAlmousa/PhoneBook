@@ -70,35 +70,35 @@ public class Phonebook {
 	//adds a new contact to a contact list implemented using a Binary Search Tree (contacts), inside the method it takes the following information(name,phone number, email address, address,birthday, notes) from the user to create a new contact and add it to the contact list, while makeing sure that the contact name and phone number are unique within the list
 	//it takes no inputs, and there is no output since its void
 	public static void AddContact(){
-		Contact c = new Contact();
-		System.out.println("Enter the contact\'s name: ");
-		input.nextLine();
-		c.name = input.nextLine();
+		Contact c = new Contact();//1
+		System.out.println("Enter the contact\'s name: ");//1
+		input.nextLine();//1
+		c.name = input.nextLine();//1
 
-		if (!contacts.empty() && contacts.findkey(c.name))
+		if (!contacts.empty() && contacts.findkey(c.name))//logn+1
 		{
-			System.out.println("The Contact Name already Exists.");
+			System.out.println("The Contact Name already Exists.");//logn
 			return;
 		}
-		System.out.print("Enter the contact's phone number:");
-		c.phoneNumber = input.nextLine();
+		System.out.print("Enter the contact's phone number:");//1
+		c.phoneNumber = input.nextLine();//1
 
 		if (!contacts.empty() && (contacts.SearchPhone(c.phoneNumber)))
 		{
 			System.out.println("The Phone Number already Exists.");
 			return;
 		}
-		System.out.print("Enter the contact's email address: ");
-		c.emailAddress = input.nextLine();
+		System.out.print("Enter the contact's email address: ");//1
+		c.emailAddress = input.nextLine();//1
 
-		System.out.print("Enter the contact's address: ");
-		c.address = input.nextLine();
+		System.out.print("Enter the contact's address: ");//1
+		c.address = input.nextLine();//1
 
-		System.out.print("Enter the contact's birthday: ");
-		c.birthday = new Date(input.nextLine());
+		System.out.print("Enter the contact's birthday: ");//1
+		c.birthday = new Date(input.nextLine());//1
 
-		System.out.print("Enter any notes for the contact: ");
-		c.notes = input.nextLine();
+		System.out.print("Enter any notes for the contact: ");//1
+		c.notes = input.nextLine();//1
 
 		if (contacts.insert(c.name, c))
 			System.out.println("Contact added successfully!");

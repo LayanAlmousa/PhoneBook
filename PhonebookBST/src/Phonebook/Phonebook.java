@@ -32,7 +32,7 @@ public class Phonebook {
 		return choice;
 	}
 
-	public static int submenu2()
+	public static int SearchContactMenu()
 	{
 		System.out.println("Enter search criteria:");
 		System.out.println("1. Name");
@@ -45,7 +45,7 @@ public class Phonebook {
 		return choice;
 	}
 
-	public static int submenu5()
+	public static int PrintEventMenu()
 	{
 		System.out.println("Enter search criteria:");
 		System.out.println("1. contact name");
@@ -55,7 +55,7 @@ public class Phonebook {
 		return choice;
 	}
 
-	public static int submenu6()
+	public static int PrintContactFname()
 	{
 		System.out.println("Enter type:");
 		System.out.println("1. event");
@@ -67,11 +67,10 @@ public class Phonebook {
 
 
 	/*1. Add a contact
-	adds a new contact to a contact BST (contacts), inside the method it takes the 
-	following information(name,phone number, email address, address,birthday, notes) from the user 
-	to create a new contact and add it to the contact list, while makeing
-        sure that the contact name and phone number are unique within the list
-	it takes no inputs, and there is no output since its void*/
+	this method is used to add a new contact to a contact BST called: contacts.
+        It prompts the user to enter the name, phone number, email address, address, birthday, and notes, 
+	creates a new contact with this information and adds it to the contact BST while making sure that the contact’s name and phone number are unique,
+        it takes no inputs(parameters), and there is no output since its void.*/
 	public static void AddContact(){
 		Contact c = new Contact();
 		System.out.println("Enter the contact\'s name: ");
@@ -108,15 +107,15 @@ public class Phonebook {
 	}
 
 	/*2. Search for a contact
-	the method allows the user to search for a contact in a contacts BST called (contacts) based on 
-        different criteria like name,phone number, birthday, email address,address.
-	first it checks if the contcacts list is empty, if its true then it  will provide
-        the user with meaningfull message indicating that the contact is not found,
-	otherwise it will show the search menu.
-	it takes no inputs, and there is no output since its void*/
+	the method allows the user to search for a contact in a contacts BST called ‘contacts’ 
+        based on different criteria like name, phone number, birthday, email address, and address.
+       First it checks if the contacts BST is empty, if it's empty it will provide the user with meaningful message
+       indicating that the contact is not found, otherwise it will show the search menu to prompt the user to choose a criteria 
+       and searches in the BST for a contact or contacts that share the same attribute value as the user’s input,
+       it takes no inputs(parameters), and there is no output since its void .*/
 	public static void SearchContact()
 	{
-		int choice = submenu2();
+		int choice = SearchContactMenu();
 		if (contacts.empty())
 			System.out.println("Couldn't Find the contact.");
 		else
@@ -204,18 +203,14 @@ public class Phonebook {
 	}
 
 	/*3. Delete a contact 
-	this method allows the user to delete a contact from a contact implmented using a Binary Search Tree (contacts), 
-        and it updates the associated events list by removing the contact from any events he was participating in.
-	after initializing a Contact object c, It prompts the user to enter the contact's name, 
-        first it checks if the contact BST is empty if its true it prints a message indicating that 
-	the contact couldn't be found and returns from the method
-	otherwise, it checks if a contact with the specified name exists in the contact BST
-        using the findkey method of the contacts Binary Search Tree. If the contact is not found, 
-	it prints a message indicating that the contact couldn't be found and returns from the method.
-	else, If a match is found, the contact is removed from the event. If the event no longer has any participating contacts,
-        it is removed from the main events list. then it prints a message confirming the successful deletion 
-	of the contact and displays its information.
-	it takes no inputs, and there is no output since its void.*/
+	this method allows the user to delete a contact from the contacts BST and updates the events list by removing his/her name
+        from all the events associated with the deleted contact, and if it was an appointment or if the contact was the only one it deletes the event. 
+        First, It prompts the user to enter the contact's name, checks if the contact BST is empty if it is empty it prints a message indicating that the contact
+	couldn't be found, otherwise, it checks if a contact with the specified name exists in the contact BST using the findkey method of the contacts BST.
+        If the contact’s name is not found, it prints a message indicating that the contact couldn't be found, but if a match is found, it checks if the contact has events
+	then the contact’s name will be removed from the events and all the appointments with that contact will be deleted. 
+        Then it prints a message confirming the successful deletion of the contact and displays its information,
+	it takes no inputs (Parameter), and there is no output since its void.*/
 	public static void DeleteContact()
 	{
 		Contact c = new Contact();
@@ -269,6 +264,11 @@ public class Phonebook {
 	}
 
 	//4. Schedule an event
+	/*This method is responsible for scheduling either an event or an appointment based on the user’s input. 
+         Before scheduling, it checks if the contact exists in the contacts BST, If the contact does not exist it will provide a meaningful message ,
+	 otherwise, it will read the user input, if it is an appointment it will check for conflict 
+         either in the chosen contact’s previous events and appointments (if they are scheduled in the same date and time),
+	 or if other contacts have the same appointment at the same location, date and time. it takes no inputs(parameters), and there is no output since its void.*/
 	public static void ScheduleEvent()
 	{
 		Contact c= new Contact();
@@ -276,7 +276,7 @@ public class Phonebook {
 
 		boolean event_Updated = false;
 
-		int choice = submenu6();
+		int choice = PrintContactFname();
 		String type;
 		if ( choice == 1 )
 		{
@@ -393,8 +393,14 @@ public class Phonebook {
 	}
 
 	//5. Print event details
+	/* this method prints event details by asking the user to choose between two search criteria: contact name or event title. 
+          If the user chooses to print the event using contact name it checks if contacts BST is not empty and the specified contact name is found, 
+	  it will look for all the events the contact with the specified name has and prints them. If it's not found or the contacts BST is empty,
+          it will display a meaningful message.
+          If the user chooses to print by searching by event title it will check if event list is empty and if there is an event with the same title and print its details,
+	  it takes no inputs(parameters), and there is no output since its void. */
 	public static void PrintEvent(){
-		int choice = submenu5();
+		int choice = PrintEventMenu();
 		switch ( choice )
 		{
 		case 1:
@@ -437,59 +443,61 @@ public class Phonebook {
 		case 2:
 		{
 			Event e = new Event();
-			System.out.print("Enter the event title:  ");
+			System.out.print("Enter the event's title:  ");
 			input.nextLine();
 			e.title = input.nextLine();
 
 			if (! events.empty())
 			{
 				events.findFirst();
-				for (int i = 0 ; i < events.size ; i++)
+				for (int i = 0 ; i < events.size ; i++)//iterate through the event list 
 				{   
-					if (events.retrieve().compareTo(e) == 0)
+					if (events.retrieve().compareTo(e) == 0)//to find e by comparing the title with already exising events
 					{
-						if (events.retrieve().EventType == true)
+						if (events.retrieve().EventType == true)//if the EventType is true then its event
 							System.out.println("Event found!");
 						else
 							System.out.println("Appointment found!");
 
 						Event ee = events.retrieve();
-						System.out.println(ee);
+						System.out.println(ee);//printing the event or Appointment information
 					}
 					events.findNext();
 				}
 			}
-			else
-				System.out.println("Couldn't Find the Event/Appointment.");
+			else // the event list is empty
+				System.out.println("Couldn't Find the Event/Appointment."); 
 		}
-		break;
+		break;//exist case 2
 		}
 	}
 
 	//6. Print contacts by first name
-	//this method allows the user to search by the first name and then print all contact's information.
-	// If contacts with the specified first name are found, they are printed. Otherwise, a message is displayed indicating that the contacts couldn't be found.
-	////it takes no inputs, and there is no output since its void
+	/*This method allows the user to search by the first name and then print all the first-name-matched-contacts information.
+           If contacts with the specified first name are found, they are printed. 
+	   Otherwise, a message is displayed indicating that the contacts couldn't be found. it takes no inputs(parameters), and there is no output since its void.*/
 	public static void PrintContactsFirstName(){
 
 		System.out.print("Enter the contact first name:");
-		String fname = input.next().trim();
+		String fname = input.next().trim(); 
 
 		if (contacts.empty())
 			System.out.println("Couldn't Find the Contact.");
 		else
-			contacts.SearchSameFirstName(fname);
+			contacts.SearchSameFirstName(fname);// the printing is in the function
 	}
 
 	//7. Print all events alphabetically // O(n)
-	//this method allows the user to print all events stored in the event list in alphabetical order.
-	//If events are found, they are printed. Otherwise, a message is displayed indicating that the events couldn't be found.
-	//it takes no inputs, and there is no output since its void
+	/*This method allows the user to print all events scheduled By all Phonebook contacts in alphabetical order,
+         we were able to accomplish that by creating a LinkedList in the main class ‘Phonebook’ called events and store each scheduled event by each contact in the list
+	 alphabetically,to be inserted sorted and only use toString() in the printing method which makes its time complexity a O(n).
+         If the event list is not empty, the events are printed. Otherwise, a message is displayed indicating that the events couldn't be found,
+	 it takes no inputs(parameters), and there is no output since its void.*/
 	public static void PrintAllEvents(){
 		if (!events.empty())
-			System.out.println(events.toString());
+			System.out.println(events.toString());//the events list is already sorted alphabetically
 		else
-			System.out.println("Couldn't Find the Event.");
+			System.out.println("There are no events.");
 	}
 
 	public static void main(String[] args) {

@@ -143,9 +143,9 @@ public class Phonebook {
 			{
 				System.out.print("Enter the contact's phone number:");
 				String phonenumber = input.nextLine();
-
-				if (!contacts.empty() && contacts.SearchPhone(phonenumber))//check if contacts BST empty and the if the phone number is exist
 				input.nextLine();
+				
+				if (!contacts.empty() && contacts.SearchPhone(phonenumber))//check if contacts BST empty and the if the phone number is exist
 				{
 					System.out.println("contact is found!");
 

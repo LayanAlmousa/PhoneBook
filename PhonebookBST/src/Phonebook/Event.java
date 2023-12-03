@@ -73,7 +73,7 @@ public class Event implements Comparable<Event> {
 		}
 		catch (Exception e)
 		{
-			throw new UnsupportedOperationException("Not supported yet.");
+			throw new UnsupportedOperationException("failed");
 		}
 	}
 
@@ -85,7 +85,7 @@ public class Event implements Comparable<Event> {
 		}
 		catch (Exception e)
 		{
-			throw new UnsupportedOperationException("Not supported yet.");
+			throw new UnsupportedOperationException("failed");
 		}
 	}
 

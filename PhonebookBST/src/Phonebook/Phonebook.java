@@ -4,8 +4,8 @@ import java.util.Scanner;
 
 /*
 
-This class represents a phonebook application. It includes a field for a linked list data structure that stores contacts,
-as well as methods for interacting with the contact list such as adding, searching, and deleting contacts.
+This class represents a phonebook application. It includes a field for a BST data structure that stores contacts,
+as well as methods for interacting with the contact BST such as adding, searching, and deleting contacts.
 Additionally, it provides functionality for scheduling events and appointments with contacts.
  */
 
@@ -66,140 +66,156 @@ public class Phonebook {
 	}
 
 
-	//1. Add a contact
-	//adds a new contact to a contact BST (contacts), inside the method it takes the following information(name,phone number, email address, address,birthday, notes) from the user to create a new contact and add it to the contact list, while makeing sure that the contact name and phone number are unique within the list
-	//it takes no inputs, and there is no output since its void
+	/*1. Add a contact
+	adds a new contact to a contact BST (contacts), inside the method it takes the 
+	following information(name,phone number, email address, address,birthday, notes) from the user 
+	to create a new contact and add it to the contact list, while makeing
+        sure that the contact name and phone number are unique within the list
+	it takes no inputs, and there is no output since its void*/
 	public static void AddContact(){
-		Contact c = new Contact();//1
-		System.out.println("Enter the contact\'s name: ");//1
-		input.nextLine();//1
-		c.name = input.nextLine();//1
+		Contact c = new Contact();
+		System.out.println("Enter the contact\'s name: ");
+		input.nextLine();
+		c.name = input.nextLine();
 
-		if (!contacts.empty() && contacts.findkey(c.name))//logn+1
+		if (!contacts.empty() && contacts.findkey(c.name))
 		{
-			System.out.println("The Contact Name already Exists.");//logn
+			System.out.println("The Contact Name already Exists.");
 			return;
 		}
-		System.out.print("Enter the contact's phone number:");//1
-		c.phoneNumber = input.nextLine();//1
+		System.out.print("Enter the contact's phone number:");
+		c.phoneNumber = input.nextLine();
 
 		if (!contacts.empty() && (contacts.SearchPhone(c.phoneNumber)))
 		{
 			System.out.println("The Phone Number already Exists.");
 			return;
 		}
-		System.out.print("Enter the contact's email address: ");//1
-		c.emailAddress = input.nextLine();//1
+		System.out.print("Enter the contact's email address: ");
+		c.emailAddress = input.nextLine();
 
-		System.out.print("Enter the contact's address: ");//1
-		c.address = input.nextLine();//1
+		System.out.print("Enter the contact's address: ");
+		c.address = input.nextLine();
 
-		System.out.print("Enter the contact's birthday: ");//1
-		c.birthday = new Date(input.nextLine());//1
+		System.out.print("Enter the contact's birthday: ");
+		c.birthday = new Date(input.nextLine());
 
-		System.out.print("Enter any notes for the contact: ");//1
-		c.notes = input.nextLine();//1
+		System.out.print("Enter any notes for the contact: ");
+		c.notes = input.nextLine();
 
 		if (contacts.insert(c.name, c))
 			System.out.println("Contact added successfully!");
 	}
 
-	//2. Search for a contact
-	//the method allows the user to search for a contact in a contacts BST called (contacts) based on different criteria like name,phone number, birthday, email address,address.
-	//first it checks if the contcacts list is empty, if its true then it  will provide the user with meaningfull message indicating that the contact is not found, otherwise it will show the search menu.
-	//it takes no inputs, and there is no output since its void
+	/*2. Search for a contact
+	the method allows the user to search for a contact in a contacts BST called (contacts) based on 
+        different criteria like name,phone number, birthday, email address,address.
+	first it checks if the contcacts list is empty, if its true then it  will provide
+        the user with meaningfull message indicating that the contact is not found,
+	otherwise it will show the search menu.
+	it takes no inputs, and there is no output since its void*/
 	public static void SearchContact()
 	{
-		int choice = submenu2();//1
-		if (contacts.empty())//1
+		int choice = submenu2();
+		if (contacts.empty())
 			System.out.println("Couldn't Find the contact.");
 		else
 		{
-			switch ( choice )//1
+			switch ( choice )
 			{
-			case 1://1
+			case 1:
 			{
-				System.out.print("Enter the contact's name: ");//1
-				input.nextLine();//1
-				String name = input.nextLine();//1
+				System.out.print("Enter the contact's name: ");
+				input.nextLine();
+				String name = input.nextLine();
 
-				if (!contacts.empty() && contacts.findkey(name))//logn+1
+				if (!contacts.empty() && contacts.findkey(name))//check if contacts BST is empty and if the name of the contact exist
 				{
-					System.out.println("Couldn't Find the contact.");//1
+					System.out.println("Couldn't Find the contact.");
 
-					System.out.println(contacts.retrieve().toString());//1
-					break;//1
+					System.out.println(contacts.retrieve().toString());
+					break;
 				}
-				System.out.println("Couldn't Find the contact.");//1
+				System.out.println("Couldn't Find the contact.");
 			}
-			break;//1
+			break;
 
-			case 2://1
+			case 2:
 			{
-				System.out.print("Enter the contact's phone number:");//1
-				input.nextLine();//1
-				String phonenumber = input.nextLine();//1
+				System.out.print("Enter the contact's phone number:");
+				String phonenumber = input.nextLine();
 
-				if (!contacts.empty() && contacts.SearchPhone(phonenumber))//n+1
+				if (!contacts.empty() && contacts.SearchPhone(phonenumber))//check if contacts BST empty and the if the phone number is exist
+				input.nextLine();
 				{
-					System.out.println("contact is found!");//1
+					System.out.println("contact is found!");
 
-					System.out.println(contacts.retrieve());//1
-					break;//1
+					System.out.println(contacts.retrieve());
+					break;
 				}
-				System.out.println("Couldn't Find the contact.");//1
+				System.out.println("Couldn't Find the contact.");
 			}
-			break;//1
+			break;
 			
-			case 3://1
+			case 3:
 			{
-				System.out.print("Enter the contact's email address: ");//1
-				input.nextLine();//1
-				String emailAddress = input.nextLine();//1
+				System.out.print("Enter the contact's email address: ");
+				input.nextLine();
+				String emailAddress = input.nextLine();
 
-				if (!contacts.empty())//1
+				if (!contacts.empty())
 				{
-					contacts.SearchEmail(emailAddress);
-					break;//1
+					contacts.SearchEmail(emailAddress);//printing will be inside the method 
+					break;
 				}
+				System.out.println("Couldn't Find the contact.");
 
 			}                
-			break;//1
+			break;
 
 			case 4:
 			{
-				System.out.print("Enter the contact's address: ");//1
-				input.nextLine();//1
-				String address = input.nextLine();//1
-				if (!contacts.empty())//1
+				System.out.print("Enter the contact's address: ");
+				input.nextLine();
+				String address = input.nextLine();
+				if (!contacts.empty())
 				{
-					contacts.SearchAddress(address);
-					break;//1
+					contacts.SearchAddress(address);//printing will be inside the method 
+					break;
 				}
+				System.out.println("Couldn't Find the contact.");
 			}                
-			break;//1
+			break;
 
 			case 5:
 			{
 				System.out.print("Enter the contact's Birthday: ");
 				Date birthday = new Date(input.next());
-				if (!contacts.empty())//1
+				if (!contacts.empty())
 				{
-					contacts.SearchBirthday(birthday);
-					break;//1
+					contacts.SearchBirthday(birthday);//printing will be inside the method
+					break;
 				}
 				System.out.println("Couldn't Find the contact.");
+				
 			}
 			}
 		}            
 	}
 
-	//3. Delete a contact 
-	//this method allows the user to delete a contact from a contact implmented using a Binary Search Tree (contacts), and it updates the associated events list by removing the contact from any events he was participating in.
-	//after initializing a Contact object c, It prompts the user to enter the contact's name, first it checks if the contact BST is empty if its true it prints a message indicating that the contact couldn't be found and returns from the method
-	//otherwise, it checks if a contact with the specified name exists in the contact BST using the findkey method of the contacts Binary Search Tree. If the contact is not found, it prints a message indicating that the contact couldn't be found and returns from the method.
-	// else, If a match is found, the contact is removed from the event. If the event no longer has any participating contacts, it is removed from the main events list. then it prints a message confirming the successful deletion of the contact and displays its information.
-	//it takes no inputs, and there is no output since its void.
+	/*3. Delete a contact 
+	this method allows the user to delete a contact from a contact implmented using a Binary Search Tree (contacts), 
+        and it updates the associated events list by removing the contact from any events he was participating in.
+	after initializing a Contact object c, It prompts the user to enter the contact's name, 
+        first it checks if the contact BST is empty if its true it prints a message indicating that 
+	the contact couldn't be found and returns from the method
+	otherwise, it checks if a contact with the specified name exists in the contact BST
+        using the findkey method of the contacts Binary Search Tree. If the contact is not found, 
+	it prints a message indicating that the contact couldn't be found and returns from the method.
+	else, If a match is found, the contact is removed from the event. If the event no longer has any participating contacts,
+        it is removed from the main events list. then it prints a message confirming the successful deletion 
+	of the contact and displays its information.
+	it takes no inputs, and there is no output since its void.*/
 	public static void DeleteContact()
 	{
 		Contact c = new Contact();
@@ -215,14 +231,14 @@ public class Phonebook {
 
 			if ( ! contacts.findkey(c.name))
 				System.out.println("Contact not found!");
-			else
+			else// contact name is found
 			{
 				c = contacts.retrieve();
 				contacts.removeKey(c.name);
 				if (! c.events.empty())
 				{
 					c.events.findFirst();
-					for ( int i = 0 ; i < c.events.size ; i++)
+					for ( int i = 0 ; i < c.events.size ; i++)//it iterate through the event list of the contact
 					{
 						Event e = c.events.retrieve();
 						if ( (!events.empty()) && events.search(e) 
@@ -231,16 +247,16 @@ public class Phonebook {
 								&& (events.retrieve().location.compareTo(e.location)==0)
 								&& (events.retrieve().EventType== e.EventType))
 						{
-							Event Update_Event = events.retrieve();
+							Event Update_Event = events.retrieve();//to store the founded event
 
 							Update_Event.removeContact(c.name);
-							if (Update_Event.contactsNames.empty())
+							if (Update_Event.contactsNames.empty())//cheack if this contact is the only/last contact in the event
 							{
-								events.remove(e);
+								events.remove(e);//update the big event list
 								System.out.println("Delete event, No cantact particapate");
 							}
-							else
-								events.update(Update_Event);
+							else//there are other contact
+								events.update(Update_Event);//update the big event list
 
 						}
 						c.events.findNext();
@@ -283,7 +299,7 @@ public class Phonebook {
 			input.nextLine();
 			e.location = input.nextLine();
 
-			String cNames[]=new String[names.length];
+			String cNames[]=new String[names.length];// this array store the contact names without comma
 			for ( int i = 0 ; i < names.length ; i++) {
 				cNames[i] = names[i].trim();
 			}
@@ -299,36 +315,36 @@ public class Phonebook {
 					{
 						// event added to contact
 						contacts.update(c.name,c);
-						if ( (!events.empty()) && events.search(e) 
+						if ( (!events.empty()) && events.search(e) // if the event alredy exists it will only update the contacts names 
 								&& (events.retrieve().date.compareTo(e.date)==0) 
 								&& (events.retrieve().time.compareTo(e.time)==0)
 								&& (events.retrieve().location.compareTo(e.location)==0)
 								&& (events.retrieve().EventType== e.EventType))
 						{
 							Event eventFound = events.retrieve();
-							eventFound.contactsNames.insert(c.name);
-							events.update(eventFound);
+							eventFound.contactsNames.insert(c.name);//store the contact name inside the event
+							events.update(eventFound);//update the big event list
 							event_Updated = true;
 						}
 
-						if (! event_Updated)  
+						if (! event_Updated)//if its a new event
 						{
 							e.contactsNames.insert(c.name);
 							events.insert(e);
 						}
 						System.out.println("Event scheduled successfully for " + c.name + "  !");
 					}
-					else
+					else// event is not added
 						System.out.println("Contact has conflict Event for " + c.name + "  !");
 				}
-				else
-					System.out.println("Cantcat " + c.name + " not found !");                                   
+				else// if contact is not found
+					System.out.println("Contcat " + c.name + " not found !");                                   
 			} // end for 
 		}  // end schedule event
 		else 
 		{ // schedule appointment
 			type = "Appointment";
-			e.EventType = false;
+			e.EventType = false;//not event
 			System.out.print("Enter appointment title: ");
 			input.nextLine();
 			e.title = input.nextLine();
@@ -349,7 +365,7 @@ public class Phonebook {
 				input.nextLine();
 				e.location = input.nextLine();
 
-				if ( (!events.empty()) && events.search(e) 
+				if ( (!events.empty()) && events.search(e) //check for conflict
 						&& (events.retrieve().date.compareTo(e.date)==0) 
 						&& (events.retrieve().time.compareTo(e.time)==0)
 						&& (events.retrieve().location.compareTo(e.location)==0)
@@ -357,7 +373,7 @@ public class Phonebook {
 				{
 					System.out.println("Appointment had been scheduled previously, could not add more contacts, try again ");
 				}
-				else
+				else//no conflict
 				{
 					if (c.addEvent(e))
 					{
@@ -388,7 +404,7 @@ public class Phonebook {
 			input.nextLine();
 			c.name = input.nextLine();
 
-			if (! contacts.empty() )
+			if (! contacts.empty() )//check if there is a contact before printing the event detalis
 			{
 				if (contacts.findkey(c.name) == true)
 				{
@@ -399,12 +415,12 @@ public class Phonebook {
 					for (int i = 0 ; i < c.events.size ; i++)
 					{
 						Event e = c.events.retrieve();
-						if (!events.empty() && events.search(e) 
+						if (!events.empty() && events.search(e) //check if the event matches with any event in the big event list
 								&& (events.retrieve().date.compareTo(e.date)==0) 
 								&& (events.retrieve().time.compareTo(e.time)==0)
 								&& (events.retrieve().location.compareTo(e.location)==0)
 								&& (events.retrieve().EventType== e.EventType))
-							System.out.println(events.retrieve().toString());
+							System.out.println(events.retrieve().toString());//print the event detail
 						c.events.findNext();
 					}
 					if (c.events.empty())
@@ -527,7 +543,7 @@ public class Phonebook {
 				System.out.println("Goodbye!");
 				break;
 			default :
-				System.out.println("Bad choice! Try again");
+				System.out.println("wrong choice! Try again");
 			}
 			System.out.println("\n\n");
 		}while (choice != 8);

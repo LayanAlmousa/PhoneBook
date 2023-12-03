@@ -225,10 +225,8 @@ public class BST<K extends Comparable<K>,T> {
 		}
 		return false; // Not found
 	}
-	//
-	/* 
-    In order traversal
-	 */
+	//In order traversal
+	 
 	@Override
 	public String toString() 
 	{
@@ -252,9 +250,7 @@ public class BST<K extends Comparable<K>,T> {
 		return str;
 	}
 
-	//
-	// Search contact phone in the BST O(n)
-	//
+	// Search contact's phone in the BST O(n)
 	public boolean SearchPhone(String phone)
 	{
 		return SearchPhoneRecursive(root, phone);
@@ -273,9 +269,7 @@ public class BST<K extends Comparable<K>,T> {
 		return (SearchPhoneRecursive(p.left , phone) || SearchPhoneRecursive(p.right, phone));
 	}
 
-	//
 	// Search contact email in the BST O(n)
-	//
 	public void SearchEmail(String email) {
 		if (!SearchEmailRecursive(root, email)) {
 			System.out.println("Couldn't find the contact");
@@ -302,10 +296,7 @@ public class BST<K extends Comparable<K>,T> {
 		return found || foundInLeft || foundInRight;
 	}
 
-
-	//
-	// Search contact address in the BST O(n)
-	//
+	// Search contact's address in the BST O(n)
 	public void SearchAddress(String address)
 	{
 		if(!SearchAddressRecursive (root, address))
@@ -328,9 +319,7 @@ public class BST<K extends Comparable<K>,T> {
 		return found || foundInLeft || foundInRight;
 	}
 
-	//
-	// Search contact birthday in the BST O(n)
-	//
+	// Search the contact's birthday in the BST O(n)
 	public void SearchBirthday(Date birthday) {
 		if (!SearchBirthdayRecursive(root, birthday)) {
 			System.out.println("Couldn't find the contact");

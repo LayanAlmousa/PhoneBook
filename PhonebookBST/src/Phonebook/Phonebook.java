@@ -188,7 +188,7 @@ public class Phonebook {
 					contacts.SearchBirthday(birthday);
 					break;//1
 				}
-				System.out.println("Couldn't Find the contact.");
+				
 			}
 			}
 		}            

@@ -32,7 +32,7 @@ public class Phonebook {
 		return choice;
 	}
 
-	public static int submenu2()
+	public static int SearchContactMenu()
 	{
 		System.out.println("Enter search criteria:");
 		System.out.println("1. Name");
@@ -45,7 +45,7 @@ public class Phonebook {
 		return choice;
 	}
 
-	public static int submenu5()
+	public static int PrintEventMenu()
 	{
 		System.out.println("Enter search criteria:");
 		System.out.println("1. contact name");
@@ -55,7 +55,7 @@ public class Phonebook {
 		return choice;
 	}
 
-	public static int submenu6()
+	public static int PrintContactFname()
 	{
 		System.out.println("Enter type:");
 		System.out.println("1. event");
@@ -115,7 +115,7 @@ public class Phonebook {
        it takes no inputs(parameters), and there is no output since its void .*/
 	public static void SearchContact()
 	{
-		int choice = submenu2();
+		int choice = SearchContactMenu();
 		if (contacts.empty())
 			System.out.println("Couldn't Find the contact.");
 		else
@@ -276,7 +276,7 @@ public class Phonebook {
 
 		boolean event_Updated = false;
 
-		int choice = submenu6();
+		int choice = PrintContactFname();
 		String type;
 		if ( choice == 1 )
 		{
@@ -400,7 +400,7 @@ public class Phonebook {
           If the user chooses to print by searching by event title it will check if event list is empty and if there is an event with the same title and print its details,
 	  it takes no inputs(parameters), and there is no output since its void. */
 	public static void PrintEvent(){
-		int choice = submenu5();
+		int choice = PrintEventMenu();
 		switch ( choice )
 		{
 		case 1:
@@ -443,32 +443,32 @@ public class Phonebook {
 		case 2:
 		{
 			Event e = new Event();
-			System.out.print("Enter the event title:  ");
+			System.out.print("Enter the event's title:  ");
 			input.nextLine();
 			e.title = input.nextLine();
 
 			if (! events.empty())
 			{
 				events.findFirst();
-				for (int i = 0 ; i < events.size ; i++)
+				for (int i = 0 ; i < events.size ; i++)//iterate through the event list 
 				{   
-					if (events.retrieve().compareTo(e) == 0)
+					if (events.retrieve().compareTo(e) == 0)//to find e by comparing the title with already exising events
 					{
-						if (events.retrieve().EventType == true)
+						if (events.retrieve().EventType == true)//if the EventType is true then its event
 							System.out.println("Event found!");
 						else
 							System.out.println("Appointment found!");
 
 						Event ee = events.retrieve();
-						System.out.println(ee);
+						System.out.println(ee);//printing the event or Appointment information
 					}
 					events.findNext();
 				}
 			}
-			else
-				System.out.println("Couldn't Find the Event/Appointment.");
+			else // the event list is empty
+				System.out.println("Couldn't Find the Event/Appointment."); 
 		}
-		break;
+		break;//exist case 2
 		}
 	}
 
@@ -479,12 +479,12 @@ public class Phonebook {
 	public static void PrintContactsFirstName(){
 
 		System.out.print("Enter the contact first name:");
-		String fname = input.next().trim();
+		String fname = input.next().trim(); 
 
 		if (contacts.empty())
 			System.out.println("Couldn't Find the Contact.");
 		else
-			contacts.SearchSameFirstName(fname);
+			contacts.SearchSameFirstName(fname);// the printing is in the function
 	}
 
 	//7. Print all events alphabetically // O(n)
@@ -495,9 +495,9 @@ public class Phonebook {
 	 it takes no inputs(parameters), and there is no output since its void.*/
 	public static void PrintAllEvents(){
 		if (!events.empty())
-			System.out.println(events.toString());
+			System.out.println(events.toString());//the events list is already sorted alphabetically
 		else
-			System.out.println("Couldn't Find the Event.");
+			System.out.println("There are no events.");
 	}
 
 	public static void main(String[] args) {
